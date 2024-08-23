@@ -77,6 +77,10 @@ li {
     padding: 5px;
 }
 
+.list-nav > li {
+    cursor: pointer;
+}
+
 li:hover {
     text-decoration: underline;
     text-underline-offset: 3px;
@@ -130,6 +134,7 @@ li:hover {
     justify-content: center;
     align-items: center;
     text-align: center;
+    animation: scrollToApper 3s ease-out;
 }
 
 .scroll-down {
@@ -139,7 +144,6 @@ li:hover {
     left: 50%;
     transform: translateX(-50%);
     flex-direction: column;
-    animation: scrollToApper 3s ease-out;
 }
 
 .scroll-up {
