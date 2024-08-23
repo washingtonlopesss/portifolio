@@ -34,19 +34,22 @@
     cursor: pointer;
 }
 
+.invisible {
+    visibility: hidden;
+}
+
 body {
-    background-color: #0D1B2A;
+    background-color: #000000;
 }
 
 header {
     width: 100%;
     height: 80px;
-    background-color: #1b263b;
-
+    background-color: #000000;
+    z-index: 1000;
     display: flex;
     justify-content: center;
     align-items: center;
-
     position: fixed;
 }
 
@@ -110,20 +113,42 @@ li:hover {
 }
 
 .icons {
-    width: 35px;
+    width: clamp(25px, 5vw, 35px);
 }
 
+@keyframes scrollToApper {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+  
 .scroll {
-    margin-top: 50px;
+    position: fixed;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
-.scroll::before {
-    content: "";
-    display: block;
-    width: 2px;
-    height: 30px;
-    background-color: #ffffff;
-    margin: 10px auto;
+.scroll-down {
+    display: flex;
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    flex-direction: column;
+    animation: scrollToApper 3s ease-out;
+}
+
+.scroll-up {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .about-me {
@@ -145,9 +170,20 @@ li:hover {
     font-size: clamp(14px, 1.5vw, 1.5em);
 }
 
-article > p {
+@keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  article > p {
     font-size: clamp(10px, 1.3vw, 1.1em);
-}
+    animation: fadeIn 3s ease-out;
+  }
+  
 
 .about-me > h4::after, .specialties > h4::after {
     content: "";
@@ -165,8 +201,14 @@ button {
     width: 100%;
     min-height: 30px;
     border-radius: 5px;
-    border: none;
-    background-color: #415a7788;
+    border: 1px solid #ffffff;
+    background-color: #000000;
+
+}
+
+button:hover {
+    color: #000000;
+    background-color: #ffffff;
 }
 
 .specialties {
@@ -183,7 +225,7 @@ button {
 
 
 li > p {
-    font-size: clamp(10px, 1.3vw, 1.1em);
+    font-size: clamp(10px, 1.3vw, 1em);
 }
 
 .list-specialties {
@@ -209,19 +251,11 @@ li > p {
     margin: 15px 0 5px 0;
 }
 
-
-
-
-
 @media (max-width: 800px) {  
 
     .about-me, .specialties {
         height: 100%;
         min-height: auto;
-    }
-
-    .list-nav {
-        display: none;
     }
 
     #menu {
@@ -242,13 +276,13 @@ li > p {
         text-align: center;
         padding: 15px;
         height: 100vh;
-        background-color: #1b263b;
+        background-color: #000000;
     }
 
-}
+    .scroll-up > p {
+        display: none;
+        bottom: 10px;
+        right: 5px;
+    } 
 
-@media (min-width: 800px) {
-    .list-nav {
-        display: flex;
-    }
 }
